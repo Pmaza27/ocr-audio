@@ -1,9 +1,10 @@
 #streamlit==0.80.0
+
 streamlit
-gTTS
-googletrans-py==2.0.7
-numpy
-pytesseract
-opencv-python-headless
-Pillow
+gTTS==2.2.2
+googletrans==3.1.0a0
 streamlit-webrtc
+numpy
+opencv-python-headless
+pytesseract
+Pillow
