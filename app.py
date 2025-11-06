@@ -77,7 +77,6 @@ inject_theme(st.session_state.ui_theme)
 # ────────────────────────────── Utils ────────────────────────────── #
 TEMP_DIR = "temp"
 os.makedirs(TEMP_DIR, exist_ok=True)
-translator = Translator()
 
 LANG_MAP = {
     "Inglés": "en",
