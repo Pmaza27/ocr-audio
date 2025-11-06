@@ -2,7 +2,7 @@
 
 streamlit
 gTTS==2.2.2
-googletrans==3.1.0a0
+deep-translator==1.11.4
 streamlit-webrtc
 numpy
 opencv-python-headless
