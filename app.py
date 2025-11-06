@@ -9,7 +9,7 @@ import streamlit as st
 import pytesseract
 from PIL import Image
 from gtts import gTTS
-from googletrans import Translator
+from deep_translator import GoogleTranslator
 
 # ────────────────────────────── Config ────────────────────────────── #
 st.set_page_config(
@@ -150,14 +150,16 @@ def ocr_extract(img_rgb: np.ndarray, tess_lang: str = "eng"):
     return text, mean_conf
 
 def text_to_speech(input_language: str, output_language: str, text: str, tld: str):
-    translation = translator.translate(text or "", src=input_language, dest=output_language)
-    trans_text = translation.text
+    # ✅ Nueva traducción con deep-translator
+    trans_text = GoogleTranslator(source=input_language, target=output_language).translate(text or "")
+    
     safe_stub = (trans_text.strip() or "audio").replace("\n", " ")[:32]
     filename = f"{datetime.now().strftime('%Y%m%d_%H%M%S')}_{safe_stub}.mp3"
     out_path = os.path.join(TEMP_DIR, filename)
     tts = gTTS(trans_text, lang=output_language, tld=tld, slow=False)
     tts.save(out_path)
     return out_path, trans_text
+
 
 # ────────────────────────────── Sidebar ────────────────────────────── #
 with st.sidebar:
